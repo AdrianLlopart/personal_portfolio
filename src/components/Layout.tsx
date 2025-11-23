@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Header, Text, Button } from '@primer/react';
-import { MarkGithubIcon, SunIcon, MoonIcon } from '@primer/octicons-react';
+import { SunIcon, MoonIcon } from '@primer/octicons-react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 interface LayoutProps {
@@ -13,11 +13,15 @@ const Layout: React.FC<LayoutProps> = ({ colorMode, onToggleTheme }) => {
 
   return (
     <Box bg="canvas.default" minHeight="100vh" display="flex" flexDirection="column">
-      <Header>
+      <Header style={{ height: 64, maxHeight: 64 }}>
         <Header.Item>
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <MarkGithubIcon size={32} />
-            <Text fontWeight="bold" fontSize={2}>Adrian Llopart</Text>
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <img
+              src="/logos/name_logo_white.png"
+              alt="Adrian Llopart"
+              height="196px"
+              style={{ display: 'block', transform: 'translateY(6px)' }}
+            />
           </Link>
         </Header.Item>
         <Header.Item full>

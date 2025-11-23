@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Box, Heading, Text, Link, Tooltip } from '@primer/react';
 import { MarkGithubIcon, MailIcon } from '@primer/octicons-react';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, YoutubeIcon } from 'lucide-react';
 import { bio, work, education } from '../data';
 import Timeline from '../components/Timeline';
 
@@ -43,6 +43,16 @@ const Home: React.FC = () => {
             <Heading as="h1" sx={{ fontSize: 4 }}>Adrian Llopart</Heading>
           </Box>
           <Box mt={3} display="flex" sx={{ gap: 3 }} alignItems="center">
+            <Tooltip aria-label="GitHub">
+              <Link href="https://github.com/AdrianLlopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
+                <MarkGithubIcon size={24} />
+              </Link>
+            </Tooltip>
+            <Tooltip aria-label="YouTube">
+              <Link href="https://www.youtube.com/channel/UCXXXXXX" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
+                <YoutubeIcon size={30} />
+              </Link>
+            </Tooltip>
             <Tooltip aria-label="LinkedIn">
               <Link href="https://www.linkedin.com/in/adrianllopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                 <Linkedin size={24} />
@@ -51,11 +61,6 @@ const Home: React.FC = () => {
             <Tooltip aria-label="Hugging Face">
               <Link href="https://huggingface.co/AdrianLlopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" width="24" height="24" />
-              </Link>
-            </Tooltip>
-            <Tooltip aria-label="GitHub">
-              <Link href="https://github.com/AdrianLlopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
-                <MarkGithubIcon size={24} />
               </Link>
             </Tooltip>
             <Tooltip aria-label="Email">
