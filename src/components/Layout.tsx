@@ -27,19 +27,19 @@ const Layout: React.FC<LayoutProps> = ({ colorMode, onToggleTheme }) => {
         <Header.Item full>
           <Box display="flex" sx={{ gap: 3 }} ml={4}>
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/' ? 'bold' : 'normal'}>About</Text>
+              <Text fontWeight={location.pathname === '/' ? 'bold' : 'normal'}>Home</Text>
             </Link>
-            <Link to="/projects" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/projects' ? 'bold' : 'normal'}>Projects</Text>
-            </Link>
-            <Link to="/research" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/research' ? 'bold' : 'normal'}>Research</Text>
+            <Link to="/education" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Text fontWeight={location.pathname === '/education' ? 'bold' : 'normal'}>Education</Text>
             </Link>
             <Link to="/work" style={{ color: 'inherit', textDecoration: 'none' }}>
               <Text fontWeight={location.pathname === '/work' ? 'bold' : 'normal'}>Work</Text>
             </Link>
-            <Link to="/education" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/education' ? 'bold' : 'normal'}>Education</Text>
+            <Link to="/research" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Text fontWeight={location.pathname === '/research' ? 'bold' : 'normal'}>Research</Text>
+            </Link>
+            <Link to="/projects" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Text fontWeight={location.pathname === '/projects' ? 'bold' : 'normal'}>Projects</Text>
             </Link>
           </Box>
         </Header.Item>
