@@ -118,7 +118,7 @@ const TimelineItemContent = ({ item, type, navigate }: { item: Experience | Educ
     viewport={{ once: true, margin: "-50px" }}
     whileHover={{ scale: 1.02 }}
     transition={{ type: "spring", stiffness: 300 }}
-    style={{ width: '100%', maxWidth: '400px', cursor: 'pointer' }}
+    style={{ width: '100%', maxWidth: '500px', cursor: 'pointer' }}
     onClick={() => navigate(`/${itemType}#${item.id}`)}
   >
     <Box 
@@ -135,46 +135,60 @@ const TimelineItemContent = ({ item, type, navigate }: { item: Experience | Educ
         }
       }}
     >
-      <Box display="flex" alignItems="center" mb={2} sx={{ gap: 2 }}>
-        {item.logoUrl ? (
-          <Avatar src={item.logoUrl} size={32} alt={'company' in item ? item.company : item.institution} />
-        ) : (
-          <Box 
-            width="32px" 
-            height="32px" 
-            borderRadius="50%" 
-            bg="canvas.subtle" 
-            display="flex" 
-            alignItems="center" 
-            justifyContent="center"
-            border="1px solid"
-            borderColor="border.default"
-          >
-            {itemType === 'work' ? <OrganizationIcon size={16} /> : <MortarBoardIcon size={16} />}
+      <Box display="flex" alignItems="flex-start" sx={{ gap: 2 }}>
+        {/* Logo Column */}
+        <Box flexShrink={0} mt={1}>
+          {item.logoUrl ? (
+            <Avatar src={item.logoUrl} size={40} alt={'company' in item ? item.company : item.institution} />
+          ) : (
+            <Box 
+              width="40px" 
+              height="40px" 
+              borderRadius="50%" 
+              bg="canvas.subtle" 
+              display="flex" 
+              alignItems="center" 
+              justifyContent="center"
+              border="1px solid"
+              borderColor="border.default"
+            >
+              {itemType === 'work' ? <OrganizationIcon size={16} /> : <MortarBoardIcon size={16} />}
+            </Box>
+          )}
+        </Box>
+
+        {/* Content Column */}
+        <Box flexGrow={1} minWidth={0}>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={1}>
+            <Heading as="h4" sx={{ fontSize: 2, mr: 2 }}>
+              {'company' in item ? item.company : item.institution}
+            </Heading>
+            <Text fontSize={1} color="fg.muted" sx={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+              {item.startDate} - {item.endDate || 'Present'}
+            </Text>
           </Box>
-        )}
-        <Box>
-          <Heading as="h4" sx={{ fontSize: 2 }}>
-            {'company' in item ? item.company : item.institution}
-          </Heading>
-          <Text fontWeight="bold" fontSize={1} color="fg.muted">
+          
+          <Text display="block" fontWeight="bold" fontSize={1} color="fg.muted">
             {'role' in item ? item.role : item.degree}
           </Text>
+          <Text display="block"  fontSize={1}>
+            {item.description}
+          </Text>
+
+          {item.longDescription && (
+            <Box mt={2}>
+              <Text as="div" fontSize={1} color="fg.muted" sx={{ whiteSpace: 'pre-wrap' }}>
+                {item.longDescription}
+              </Text>
+            </Box>
+          )}
+
+          <Box mt={2} display="flex" flexWrap="wrap" sx={{ gap: 1 }}>
+            {item.tags.map(tag => (
+              <Label key={tag} variant="secondary">{tag}</Label>
+            ))}
+          </Box>
         </Box>
-      </Box>
-
-      <Text display="block" fontSize={1} color="fg.muted" mb={2}>
-        {item.startDate} - {item.endDate || 'Present'}
-      </Text>
-      
-      <Text as="p" fontSize={1}>
-        {item.description}
-      </Text>
-
-      <Box mt={2} display="flex" flexWrap="wrap" sx={{ gap: 1 }}>
-        {item.tags.map(tag => (
-          <Label key={tag} variant="secondary">{tag}</Label>
-        ))}
       </Box>
     </Box>
   </motion.div>
