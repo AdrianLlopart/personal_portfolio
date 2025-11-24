@@ -53,7 +53,7 @@ const Home: React.FC = () => {
                 </Link>
               </Tooltip>
               <Tooltip aria-label="LinkedIn">
-                <Link href="https://www.linkedin.com/in/adrianllopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
+                <Link href="https://www.linkedin.com/in/adrian-llopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                   <Linkedin size={24} />
                 </Link>
               </Tooltip>
