@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Heading, Text, Label, TextInput, Link, Avatar } from '@primer/react';
+import { Box, Heading, Text, Label, TextInput, Avatar } from '@primer/react';
 import { SearchIcon, OrganizationIcon } from '@primer/octicons-react';
-import { work, projects } from '../data';
+import { work, projects, research } from '../data';
 import MediaDisplay from '../components/MediaDisplay';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useFilteredData } from '../hooks/useFilteredData';
 
 const Work: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { 
     selectedTag, 
     setSelectedTag, 
@@ -111,18 +112,30 @@ const Work: React.FC = () => {
                 {job.relatedProjectIds && job.relatedProjectIds.length > 0 && (
                   <Box mt={4} pt={3} borderTop="1px solid" borderColor="border.default">
                     <Heading as="h4" sx={{ fontSize: 1, mb: 2 }}>Related Projects</Heading>
-                    <Box display="grid" gridTemplateColumns="repeat(auto-fill, minmax(250px, 1fr))" sx={{ gap: 3 }}>
+                                        <Box display="grid" gridTemplateColumns="repeat(auto-fill, minmax(250px, 1fr))" sx={{ gap: 3 }}>
                       {job.relatedProjectIds.map(projectId => {
                         const project = projects.find(p => p.id === projectId);
                         if (!project) return null;
                         return (
-                          <Box key={project.id} p={3} border="1px solid" borderColor="border.default" borderRadius={2} bg="canvas.subtle">
+                          <Box 
+                            key={project.id} 
+                            p={3} 
+                            border="1px solid" 
+                            borderColor="border.default" 
+                            borderRadius={2} 
+                            bg="canvas.subtle"
+                            onClick={() => navigate(`/projects#${project.id}`)}
+                            sx={{ 
+                              cursor: 'pointer', 
+                              transition: 'all 0.2s',
+                              ':hover': { 
+                                borderColor: 'accent.fg',
+                                boxShadow: 'shadow.medium'
+                              } 
+                            }}
+                          >
                             <Heading as="h5" sx={{ fontSize: 1 }}>
-                              {project.link || project.websiteUrl ? (
-                                <Link href={project.link || project.websiteUrl} target="_blank">{project.title}</Link>
-                              ) : (
-                                project.title
-                              )}
+                              {project.title}
                             </Heading>
                             <Text as="p" fontSize={0} mt={1} color="fg.muted">{project.description}</Text>
                           </Box>
@@ -131,6 +144,43 @@ const Work: React.FC = () => {
                     </Box>
                   </Box>
                 )}
+
+                {job.relatedPaperIds && job.relatedPaperIds.length > 0 && (
+                  <Box mt={4} pt={3} borderTop="1px solid" borderColor="border.default">
+                    <Heading as="h4" sx={{ fontSize: 1, mb: 2 }}>Related Papers</Heading>
+                    <Box display="grid" gridTemplateColumns="repeat(auto-fill, minmax(250px, 1fr))" sx={{ gap: 3 }}>
+                      {job.relatedPaperIds.map(paperId => {
+                        const paper = research.find(p => p.id === paperId);
+                        if (!paper) return null;
+                        return (
+                          <Box 
+                            key={paper.id} 
+                            p={3} 
+                            border="1px solid" 
+                            borderColor="border.default" 
+                            borderRadius={2} 
+                            bg="canvas.subtle"
+                            onClick={() => navigate(`/research#${paper.id}`)}
+                            sx={{ 
+                              cursor: 'pointer', 
+                              transition: 'all 0.2s',
+                              ':hover': { 
+                                borderColor: 'accent.fg',
+                                boxShadow: 'shadow.medium'
+                              } 
+                            }}
+                          >
+                            <Heading as="h5" sx={{ fontSize: 1 }}>
+                              {paper.title}
+                            </Heading>
+                            <Text as="p" fontSize={0} mt={1} color="fg.muted">{paper.description}</Text>
+                          </Box>
+                        );
+                      })}
+                    </Box>
+                  </Box>
+                )}
+
 
                 <Box mt={3} display="flex" flexWrap="wrap" sx={{ gap: 1 }}>
                   {job.tags.map(tag => (

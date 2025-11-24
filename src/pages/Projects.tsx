@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Heading, Text, Label, TextInput } from '@primer/react';
 import { SearchIcon, RepoIcon, BookIcon, VideoIcon } from '@primer/octicons-react';
 import { projects } from '../data';
 import MediaDisplay from '../components/MediaDisplay';
 import { useFilteredData } from '../hooks/useFilteredData';
+import { useLocation } from 'react-router-dom';
 
 const Projects: React.FC = () => {
+  const location = useLocation();
   const { 
     selectedTag, 
     setSelectedTag, 
@@ -14,6 +16,15 @@ const Projects: React.FC = () => {
     allTags, 
     filteredData: filteredProjects 
   } = useFilteredData(projects);
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location, filteredProjects]);
 
   return (
     <Box display="flex" flexDirection={['column', 'column', 'row']} sx={{ gap: 4 }}>
@@ -52,16 +63,16 @@ const Projects: React.FC = () => {
         </Box>
 
         <Box display="flex" flexDirection="column" sx={{ gap: 3 }}>
-          {filteredProjects.map((project, index) => (
-            <Box key={index} p={3} border="1px solid" borderColor="border.default" borderRadius={2} bg="canvas.default">
+          {filteredProjects.map((project) => (
+            <Box key={project.id} id={project.id} p={3} border="1px solid" borderColor="border.default" borderRadius={2} bg="canvas.default">
               <Box display="flex" justifyContent="space-between" alignItems="flex-start">
                 <Box display="flex" sx={{ gap: 2 }} alignItems="center">
                    <Text color="fg.muted">
-                     {project.type === 'paper' ? <BookIcon /> : project.type === 'video' ? <VideoIcon /> : <RepoIcon />}
+                     {project.pdfUrl ? <BookIcon /> : (project.videoUrls && project.videoUrls.length > 0) ? <VideoIcon /> : <RepoIcon />}
                    </Text>
                    <Heading as="h3" sx={{ fontSize: 2 }}>
-                     {project.link ? (
-                       <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                     {project.websiteUrl ? (
+                       <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
                          {project.title}
                        </a>
                      ) : (

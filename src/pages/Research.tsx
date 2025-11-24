@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Heading, Text, Label, TextInput } from '@primer/react';
 import { SearchIcon, BookIcon } from '@primer/octicons-react';
 import { research } from '../data';
 import MediaDisplay from '../components/MediaDisplay';
 import { useFilteredData } from '../hooks/useFilteredData';
+import { useLocation } from 'react-router-dom';
 
 const Research: React.FC = () => {
+  const location = useLocation();
   const { 
     selectedTag, 
     setSelectedTag, 
@@ -14,6 +16,15 @@ const Research: React.FC = () => {
     allTags, 
     filteredData: filteredResearch 
   } = useFilteredData(research);
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location, filteredResearch]);
 
   return (
     <Box display="flex" flexDirection={['column', 'column', 'row']} sx={{ gap: 4 }}>
@@ -52,8 +63,8 @@ const Research: React.FC = () => {
         </Box>
 
         <Box display="flex" flexDirection="column" sx={{ gap: 3 }}>
-          {filteredResearch.map((item, index) => (
-            <Box key={index} p={3} border="1px solid" borderColor="border.default" borderRadius={2} bg="canvas.default">
+          {filteredResearch.map((item) => (
+            <Box key={item.id} id={item.id} p={3} border="1px solid" borderColor="border.default" borderRadius={2} bg="canvas.default">
               <Box display="flex" justifyContent="space-between" alignItems="flex-start">
                 <Box display="flex" sx={{ gap: 2 }} alignItems="center">
                    <Text color="fg.muted"><BookIcon /></Text>
@@ -72,7 +83,7 @@ const Research: React.FC = () => {
               
               {item.publication && (
                 <Text as="p" fontSize={1} color="fg.muted" fontStyle="italic" mt={1}>
-                  Published in: {item.publication}
+                  {item.publication}
                 </Text>
               )}
 
