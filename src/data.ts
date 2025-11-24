@@ -185,7 +185,7 @@ export const research: Research[] = [
         location: "South Korea",
         tags: ["3D", "CV", "Grasping", "Humanoid", "ICP", "PCL", "Robotics"],
         publication: "IEEE 5th International Conference on Robot Intelligence Technology and Applications (RITA)",
-        pdfUrl: "https://orbit.dtu.dk/en/publications/autonomous-3d-model-generation-of-unknown-objects-for-dual-manipu/",
+        pdfUrl: "papers/3d-model-objects.pdf",
         slidesUrl: "presentations/3d-model-objects.pdf",
         
     },
