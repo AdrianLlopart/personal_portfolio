@@ -111,6 +111,7 @@ export const projects: Project[] = [
         date: "2016",
         tags: ["AI", "CNN", "C++", "Grasping", "ML", "PCL", "Robotics", "ROS"],
         codeUrl: "https://github.com/Allopart/table_cleaner_ur10",
+        slidesUrl: "images/table_cleaner.png"
     },
     {
         id: "rbpf",
@@ -159,6 +160,7 @@ export const research: Research[] = [
         tags: ["3D", "AI", "CNN", "Grasping", "Humanoid", "ML", "Planning", "Robotics"],
         publication: "The 15th International Conference on Control, Automation, Robotics and Vision (ICARCV)",
         pdfUrl: "papers/task-intelligence.pdf",
+        slidesUrl: "images/task-intelligence.pdf",
         videoUrls: ["https://youtu.be/XQtiLE5DmF8"],
     },
     {
@@ -170,6 +172,7 @@ export const research: Research[] = [
         tags: ["AI", "CNN", "ML", "Navigation", "ROS", "Robotics", "SLAM", "Segmentation"],
         publication: "Industrial Conference on Robotics and Computer Vision (ICRCV)",
         pdfUrl: "papers/semantic-mapping.pdf",
+        slidesUrl: "presentations/semantic-mapping.pdf",
         videoUrls: ["https://youtu.be/BYbUQk4gttw"]
     },
     {
@@ -345,6 +348,7 @@ export const education: Education[] = [
         longDescription: `Exchange abroad to write the Master Thesis for a duration of 4 months at the Department of Computer Science in Tokyo University under *Professor Takeo Igarashi* and *Associate Professor Daisuke Sakamoto*. The project consisted on developing a **teleoperation system for miniaturized humanoid robots** using VR devices, pose estimation and handheld controllers.`,
         tags: ["Humanoid", "Pose Estimation", "Research", "Robotics", "Teleoperation", "VR"],
         logoUrl: "logos/TU.png",
+        pdfUrl: "papers/master-thesis.pdf",
         location: "Tokyo, Japan"
     },
     {
