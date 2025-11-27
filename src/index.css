@@ -1,4 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  /* Lato Font Weight Variables for consistency */
+  --font-family-lato: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  ---thin: 100;
+  --light: 300;
+  --regular: 400;
+  --bold: 700;
+  --extrabold: 900;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Ensure all elements inherit Lato font */
+*,
+*::before,
+*::after {
+  font-family: inherit !important;
+}
+
+/* Override Primer React's default font settings */
+[data-portal-root],
+[data-color-mode] {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Primer React component overrides */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button, input, textarea, label, li, ul, ol {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* ReactMarkdown content */
+.markdown-body,
+.markdown-body * {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Primer specific elements */
+[class*="Heading"],
+[class*="Text"],
+[class*="Label"],
+[class*="Button"] {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Ensure text in cards, boxes, and other containers */
+[class*="Box"] *,
+[class*="Card"] * {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Dialog and modal content */
+[role="dialog"] *,
+[class*="Dialog"] * {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Input placeholders */
+::placeholder {
+  font-family: var(--font-family-lato) !important;
+}
+
+/* Specific overrides for styled-components that Primer uses */
+[data-component="text"],
+[data-component="heading"],
+[data-component="label"] {
+  font-family: var(--font-family-lato) !important;
 }

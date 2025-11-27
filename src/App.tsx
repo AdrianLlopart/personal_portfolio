@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ThemeProvider, BaseStyles } from '@primer/react';
+import { ThemeProvider, BaseStyles, theme as primerTheme } from '@primer/react';
+import deepmerge from 'deepmerge';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -7,6 +8,32 @@ import Projects from './pages/Projects';
 import Research from './pages/Research';
 import Work from './pages/Work';
 import Education from './pages/Education';
+
+// Custom theme with forest green accent color
+const customTheme = deepmerge(primerTheme, {
+  colorSchemes: {
+    light: {
+      colors: {
+        accent: {
+          fg: '#228B22',
+          emphasis: '#228B22',
+          muted: 'rgba(34, 139, 34, 0.4)',
+          subtle: 'rgba(34, 139, 34, 0.1)',
+        },
+      },
+    },
+    dark: {
+      colors: {
+        accent: {
+          fg: '#2E8B2E',
+          emphasis: '#228B22',
+          muted: 'rgba(34, 139, 34, 0.4)',
+          subtle: 'rgba(34, 139, 34, 0.15)',
+        },
+      },
+    },
+  },
+});
 
 function App() {
   const [colorMode, setColorMode] = useState<'day' | 'night'>('day');
@@ -28,7 +55,7 @@ function App() {
   };
 
   return (
-    <ThemeProvider colorMode={colorMode} preventSSRMismatch>
+    <ThemeProvider theme={customTheme} colorMode={colorMode} preventSSRMismatch>
       <BaseStyles>
         <Router>
           <Routes>
