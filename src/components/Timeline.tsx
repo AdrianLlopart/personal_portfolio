@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Box, Text, Heading, Label, Avatar } from '@primer/react';
 import { OrganizationIcon, MortarBoardIcon } from '@primer/octicons-react';
 import { Experience, Education } from '../data';
@@ -12,23 +12,42 @@ interface TimelineProps {
 
 const Timeline: React.FC<TimelineProps> = ({ items, type }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isHoveringItem = useRef(false);
   const navigate = useNavigate();
   
   const cursorProgress = useMotionValue(0);
   const scaleY = useSpring(cursorProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 20,
     restDelta: 0.001
   });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (containerRef.current) {
+    // Only follow cursor if not hovering over an item
+    if (containerRef.current && !isHoveringItem.current) {
       const { top, height } = containerRef.current.getBoundingClientRect();
       const relativeY = e.clientY - top;
       const progress = Math.max(0, Math.min(1, relativeY / height));
       cursorProgress.set(progress);
     }
   };
+
+  const handleItemHover = useCallback((index: number) => {
+    isHoveringItem.current = true;
+    if (containerRef.current && dotRefs.current[index]) {
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const dotRect = dotRefs.current[index]!.getBoundingClientRect();
+      // Calculate position to the center of the dot
+      const dotCenterY = dotRect.top + dotRect.height / 2 - containerRect.top;
+      const progress = Math.max(0, Math.min(1, dotCenterY / containerRect.height));
+      cursorProgress.set(progress);
+    }
+  }, [cursorProgress]);
+
+  const handleItemLeave = useCallback(() => {
+    isHoveringItem.current = false;
+  }, []);
 
   return (
     <Box 
@@ -58,7 +77,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, type }) => {
           top: 0,
           bottom: 0,
           width: '2px',
-          backgroundColor: '#0969da', // Primer accent color
+          backgroundColor: '#228B22', // Primer accent color
           transformOrigin: 'top',
           scaleY,
           translateX: '-50%',
@@ -66,44 +85,102 @@ const Timeline: React.FC<TimelineProps> = ({ items, type }) => {
         }}
       />
 
-      {items.map((item, index) => (
+      {items.map((item, index) => {
+        const isLeft = index % 2 === 0;
+        return (
         <Box 
-          key={index} 
+          key={index}
           display="flex" 
           justifyContent="center"
           alignItems="center"
           position="relative"
           mb={6}
           width="100%"
+          sx={{
+            [`&:has(.timeline-content-${index}:hover) .timeline-dot`]: {
+              borderColor: 'accent.fg'
+            },
+            [`&:has(.timeline-content-${index}:hover) .timeline-connector`]: {
+              bg: 'accent.fg'
+            }
+          }}
         >
           {/* Left Side (Content or Empty) */}
           <Box flex={1} display="flex" justifyContent="flex-end" pr={4}>
-            {index % 2 === 0 && (
-              <TimelineItemContent item={item} type={type} navigate={navigate} />
+            {isLeft && (
+              <Box
+                className={`timeline-content-${index}`}
+                onMouseEnter={() => handleItemHover(index)}
+                onMouseLeave={handleItemLeave}
+              >
+                <TimelineItemContent item={item} type={type} navigate={navigate} />
+              </Box>
             )}
           </Box>
 
+          {/* Connector Line - Left side (when content is on left) */}
+          {isLeft && (
+            <Box
+              className="timeline-connector"
+              position="absolute"
+              right="calc(50% + 8px)"
+              width="24px"
+              height="2px"
+              bg="border.default"
+              sx={{ 
+                transition: 'background-color 0.2s ease'
+              }}
+            />
+          )}
+
           {/* Center Dot */}
           <Box 
+            ref={(el: HTMLDivElement | null) => { dotRefs.current[index] = el; }}
+            className="timeline-dot"
             position="relative"
             width="16px" 
             height="16px" 
             borderRadius="50%" 
             bg="canvas.default" 
             border="4px solid"
-            borderColor="accent.fg"
+            borderColor="border.default"
             zIndex={2}
             flexShrink={0}
+            sx={{
+              transition: 'border-color 0.2s ease'
+            }}
           />
+
+          {/* Connector Line - Right side (when content is on right) */}
+          {!isLeft && (
+            <Box
+              className="timeline-connector"
+              position="absolute"
+              left="calc(50% + 8px)"
+              width="24px"
+              height="2px"
+              bg="border.default"
+              sx={{ 
+                transition: 'background-color 0.2s ease'
+              }}
+            />
+          )}
 
           {/* Right Side (Content or Empty) */}
           <Box flex={1} display="flex" justifyContent="flex-start" pl={4}>
-            {index % 2 !== 0 && (
-              <TimelineItemContent item={item} type={type} navigate={navigate} />
+            {!isLeft && (
+              <Box
+                className={`timeline-content-${index}`}
+                onMouseEnter={() => handleItemHover(index)}
+                onMouseLeave={handleItemLeave}
+              >
+                <TimelineItemContent item={item} type={type} navigate={navigate} />
+              </Box>
             )}
           </Box>
         </Box>
-      ))}
+        );
+      })}
     </Box>
   );
 };
@@ -115,9 +192,9 @@ const TimelineItemContent = ({ item, type, navigate }: { item: Experience | Educ
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
+    viewport={{ once: true, amount: 0.3 }}
     whileHover={{ scale: 1.02 }}
-    transition={{ type: "spring", stiffness: 300 }}
+    transition={{ type: "spring", stiffness: 300, damping: 25 }}
     style={{ width: '100%', maxWidth: '500px', cursor: 'pointer' }}
     onClick={() => navigate(`/${itemType}#${item.id}`)}
   >
