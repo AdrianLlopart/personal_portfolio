@@ -240,11 +240,11 @@ const TimelineItemContent = ({ item, type, navigate }: { item: Experience | Educ
 
         {/* Content Column */}
         <Box flexGrow={1} minWidth={0}>
-          <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={1}>
-            <Heading as="h4" sx={{ fontSize: 2, mr: 2 }}>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={0}>
+            <Heading as="h4" sx={{ fontSize: 2, mr: 2, transition: 'font-size 0.2s ease' }}>
               {'company' in item ? item.company : item.institution}
             </Heading>
-            <Text fontSize={1} color="fg.muted" sx={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+            <Text fontSize={1} color="fg.muted" sx={{ whiteSpace: 'nowrap', flexShrink: 0, transition: 'font-size 0.2s ease' }}>
               {(item.startDate) ? (
                 <>
                   {item.startDate} - {item.endDate || 'Present'}
@@ -255,16 +255,16 @@ const TimelineItemContent = ({ item, type, navigate }: { item: Experience | Educ
             </Text>
           </Box>
           
-          <Text display="block" fontWeight="bold" fontSize={1} color="fg.muted">
+          <Text display="block" fontWeight="bold" mt={0} fontSize={1} color="fg.muted" sx={{ transition: 'font-size 0.2s ease' }}>
             {'role' in item ? item.role : item.degree}
           </Text>
-          <Text display="block" mt={2} fontSize={1} sx={{ textAlign: 'justify' }}>
+          <Text display="block" mt={2} fontSize={1} sx={{ textAlign: 'justify', transition: 'font-size 0.2s ease' }}>
             {item.description}
           </Text>
 
-          <Box mt={2} display="flex" flexWrap="wrap" sx={{ gap: 1 }}>
+          <Box mt={3} display="flex" flexWrap="wrap" sx={{ gap: 1 }}>
             {item.tags.map(tag => (
-              <Label key={tag} variant="secondary">{tag}</Label>
+              <Label key={tag} variant="secondary" sx={{ transition: 'font-size 0.2s ease' }}>{tag}</Label>
             ))}
           </Box>
         </Box>
