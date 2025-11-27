@@ -69,7 +69,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, type }) => {
         sx={{ transform: 'translateX(-50%)' }} 
       />
 
-      {/* Moving Blue Dot Indicator */}
+      {/* Moving Accent Line Indicator */}
       <motion.div
         style={{
           position: 'absolute',
@@ -77,13 +77,14 @@ const Timeline: React.FC<TimelineProps> = ({ items, type }) => {
           top: 0,
           bottom: 0,
           width: '2px',
-          backgroundColor: 'accent.fg',
           transformOrigin: 'top',
           scaleY,
           translateX: '-50%',
           zIndex: 1
         }}
-      />
+      >
+        <Box width="100%" height="100%" bg="accent.fg" />
+      </motion.div>
 
       {items.map((item, index) => {
         const isLeft = index % 2 === 0;

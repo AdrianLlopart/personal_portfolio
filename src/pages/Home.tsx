@@ -44,7 +44,7 @@ const Home: React.FC = () => {
             <Heading as="h1" sx={{ fontSize: 4, textAlign: 'center' }}>Adrian Llopart</Heading>
             <Box mt={3} display="flex" sx={{ gap: 3 }} alignItems="center" justifyContent="center">
               <Tooltip aria-label="GitHub">
-                <Link href="https://github.com/AdrianLlopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.highlight' } }}>
+                <Link href="https://github.com/AdrianLlopart" target="_blank" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                   <MarkGithubIcon size={24} />
                 </Link>
               </Tooltip>
@@ -59,12 +59,12 @@ const Home: React.FC = () => {
                 </Link>
               </Tooltip>
               <Tooltip aria-label="Email">
-                <Link href="mailto:adrianllopart@gmail.com" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.highlight' } }}>
+                <Link href="mailto:adrianllopart@gmail.com" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                   <MailIcon size={24} />
                 </Link>
               </Tooltip>
               <Tooltip aria-label="CV">
-                <Link href="presentations/adrianllopart_CV.pdf" download="adrianllopart_CV.pdf" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.highlight' } }}>
+                <Link href="presentations/adrianllopart_CV.pdf" download="adrianllopart_CV.pdf" sx={{ color: 'fg.muted', '&:hover': { color: 'accent.fg' } }}>
                   <FileIcon size={24} />
                 </Link>
               </Tooltip>

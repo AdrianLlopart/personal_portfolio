@@ -9,28 +9,26 @@ import Research from './pages/Research';
 import Work from './pages/Work';
 import Education from './pages/Education';
 
-// Custom theme with forest green accent color
+// Custom theme with black accent color
 const customTheme = deepmerge(primerTheme, {
   colorSchemes: {
     light: {
       colors: {
         accent: {
-          fg: '#228B22',
-          emphasis: '#228B22',
-          muted: 'rgba(34, 139, 34, 0.4)',
-          subtle: 'rgba(34, 139, 34, 0.1)',
-          highlight: 'black'
+          fg: '#000000',
+          emphasis: '#000000',
+          muted: 'rgba(0, 0, 0, 0.4)',
+          subtle: 'rgba(0, 0, 0, 0.1)',
         },
       },
     },
     dark: {
       colors: {
         accent: {
-          fg: '#2E8B2E',
-          emphasis: '#228B22',
-          muted: 'rgba(34, 139, 34, 0.4)',
-          subtle: 'rgba(34, 139, 34, 0.15)',
-          highlight: 'white'
+          fg: '#ffffff',
+          emphasis: '#ffffff',
+          muted: 'rgba(255, 255, 255, 0.4)',
+          subtle: 'rgba(255, 255, 255, 0.15)',
         },
       },
     },
