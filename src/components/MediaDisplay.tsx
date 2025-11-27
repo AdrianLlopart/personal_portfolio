@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Dialog } from '@primer/react';
-import { GlobeIcon, ScreenFullIcon, BookIcon } from '@primer/octicons-react';
+import { GlobeIcon, ScreenFullIcon, BookIcon, ImageIcon, VideoIcon } from '@primer/octicons-react';
 import { MediaLinks } from '../data';
 import { GithubIcon } from 'lucide-react';
 
@@ -266,6 +266,22 @@ const MediaDisplay: React.FC<MediaLinks> = ({ videoUrls, imageUrls, websiteUrl, 
             />
             {/* Overlay to capture click */}
             <Box position="absolute" top={0} left={0} right={0} bottom={0} bg="transparent" />
+            {/* Label */}
+            <Box
+              position="absolute"
+              bottom={2}
+              left={2}
+              px={2}
+              py={1}
+              bg="canvas.default"
+              borderRadius={1}
+              display="flex"
+              alignItems="center"
+              sx={{ gap: 1, opacity: 0.9 }}
+            >
+              <ImageIcon size={16} />
+              <Box as="span" fontSize={1}>Image</Box>
+            </Box>
             <FullscreenOverlay />
           </Box>
         </MediaCard>
@@ -394,6 +410,22 @@ const MediaDisplay: React.FC<MediaLinks> = ({ videoUrls, imageUrls, websiteUrl, 
             />
             {/* Overlay to capture click */}
             <Box position="absolute" top={0} left={0} right={0} bottom={0} bg="transparent" />
+            {/* Label */}
+            <Box
+              position="absolute"
+              bottom={2}
+              left={2}
+              px={2}
+              py={1}
+              bg="canvas.default"
+              borderRadius={1}
+              display="flex"
+              alignItems="center"
+              sx={{ gap: 1, opacity: 0.9 }}
+            >
+              <VideoIcon size={16} />
+              <Box as="span" fontSize={1}>Video</Box>
+            </Box>
             <FullscreenOverlay />
           </Box>
         </MediaCard>
