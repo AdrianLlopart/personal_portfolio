@@ -293,7 +293,7 @@ export const work: Experience[] = [
         company: "Technical University of Denmark",
         role: "Research Assistant",
         endDate: "2015",
-        description: "Assitance on PhD project: Automation of Combine Harvester, between DTU and AGCO.",
+        description: "Assistance on PhD project: Automation of combine harvesters, between DTU and AGCO.",
         longDescription: "Developing algorithms and systems for the automation of combine harvesters. Included topics like sensor fusion, UAV vision, image processing and control theory",
         tags: ["CV", "Research", "Robotics", "Sensor fusion", "UAV"],
         location: "Lyngby, Denmark",
