@@ -56,27 +56,21 @@ export interface Research extends BaseItem {
 
 export const projects: Project[] = [
     {
+        id: "portfolio",
+        title: "Personal Portfolio Website",
+        description:
+            `Personal Portfolio Website showcasing projects, experience, and skills with a clean and responsive design.`,
+        date: "2025",
+        tags: ["GitHub Actions", "React", "Tailwind", "TypeScript", "Vite"],
+        websiteUrl: "https://adrianllopart.github.io/portfolio/",
+    },
+    {
         id: "kinokraft",
         title: "KinokraftAI - AI Agents for Gen AI Media Creation",
         description:
-            `KinoKraftAI is a comprehensive web application designed for AI-driven media creation and manipulation, offering tools for processing images, video, and audio through a conversational interface. The platform leverages Large Language Models (LLMs) to facilitate user interactions, allowing for complex media editing tasks and project management within a unified workspace. It features a robust architecture that integrates secure user authentication via Firebase and subscription management through Stripe. The system is built for scalability using containerization and infrastructure-as-code principles to ensure reliable deployment and performance.
-
-**Tech Stack**
-- Frontend:
-1. Framework: React
-2. Language: TypeScript
-3. Build Tool: Vite
-4. Styling: Tailwind CSS, PostCSS
-5. State/Services: Firebase SDK, Stripe.js
-
-- Backend:
-1. Language: Python
-2. Framework: FastAPI
-3. AI/ML: LLM Integration, Custom AI Media Tools (Audio, Image, Video)
-4. Database/Storage: Firebase Admin SDK, SQL
-5. Infrastructure & DevOps: Docker, Terraform, GitHub Actions`,
+            `KinoKraftAI is a comprehensive web application designed for AI-driven media creation and manipulation, offering tools for processing images, video, and audio through a conversational interface. The platform leverages Large Language Models (LLMs) to facilitate user interactions, allowing for complex media editing tasks and project management within a unified workspace. It features a robust architecture that integrates secure user authentication via Firebase and subscription management through Stripe. The system is built for scalability using containerization and infrastructure-as-code principles to ensure reliable deployment and performance.`,
         date: "2025",
-        tags: ["Agents", "Docker", "FastAPI", "Firebase", "GenAI", "LLMs", "Render", "Scaleway", "Stripe", "Tailwind", "Terraform", "TypeScript"],
+        tags: ["AI Agents", "Docker", "e-commerce", "FastAPI", "Firebase", "GenAI", "GitHub Actions", "LLM", "Multimodal", "Python", "React", "Render", "Scaleway", "Stripe", "Tailwind", "Terraform", "TypeScript", "Vite"],
         codeUrl: "https://github.com/KinoKraft",
         videoUrls: ["https://youtu.be/nhm9qr5tBCk"]
     },
@@ -92,13 +86,7 @@ export const projects: Project[] = [
     {
         id: "webshop",
         title: "Webshop for Accoustic Frames",
-        description: `Full-stack e-commerce platform dedicated to the sale and customization of acoustic frames and whiteboards. The application features a React-based frontend that includes a product customizer, shopping cart, and user account management. It is powered by a Node.js and Express backend that handles API requests, authentication, and data management for products and orders. The project is designed to offer a seamless user experience for customers looking to tailor specific acoustic solutions to their needs.
-
-**Tech Stack**
-- Frontend: React, TypeScript, React Router
-- Backend: Node.js, TypeScript
-- Database: MongoDB
-- Utilities: Nodemailer, Google Maps API`,
+        description: `Full-stack e-commerce platform dedicated to the sale and customization of acoustic frames and whiteboards. The application features a React-based frontend that includes a product customizer, shopping cart, and user account management. It is powered by a Node.js and Express backend that handles API requests, authentication, and data management for products and orders. The project is designed to offer a seamless user experience for customers looking to tailor specific acoustic solutions to their needs.`,
         date: "2025",
         tags: ["e-commerce", "MongoDB", "Node.js", "React", "TypeScript"],
         codeUrl: "https://github.com/AdrianLlopart/prebenlunde-webshop",
@@ -111,7 +99,7 @@ export const projects: Project[] = [
         date: "2016",
         tags: ["AI", "CNN", "C++", "Grasping", "ML", "PCL", "Robotics", "ROS"],
         codeUrl: "https://github.com/Allopart/table_cleaner_ur10",
-        slidesUrl: "images/table_cleaner.png"
+        slidesUrl: "images/table-cleaner.png"
     },
     {
         id: "rbpf",
