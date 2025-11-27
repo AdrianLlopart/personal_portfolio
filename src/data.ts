@@ -333,6 +333,7 @@ export const education: Education[] = [
         description: "Autonomous Manipulation and 3D Perception for Humanoid Robots.",
         longDescription: "Focused on enabling robots to handle kitchen chores and interact with unknown objects. Published research in conferences like RiTA.",
         tags: ["AI", "C++", "CNN", "CV", "Humanoid", "ML", "Manipulation", "PCL", "Pose Estimation", "Python", "ROS", "Robotics", "SLAM", "YOLO"],
+        pdfUrl: "papers/phd-thesis.pdf",
         relatedPaperIds: ["door-recognition", "bayes", "teleoperated-arm", "semantic-mapping", "maritime"],
         relatedProjectIds: ["rbpf", "table-cleaner"],
         logoUrl: "logos/DTU.png",
