@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ colorMode, onToggleTheme }) => {
 
   return (
     <Box bg="canvas.default" minHeight="100vh" display="flex" flexDirection="column">
-      <Header style={{ height: 64, maxHeight: 64 }}>
+      <Header sx={{ height: 64, maxHeight: 64, position: 'sticky', top: 0, zIndex: 100, justifyContent: 'space-between' }}>
         <Header.Item>
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             <img
@@ -24,25 +24,29 @@ const Layout: React.FC<LayoutProps> = ({ colorMode, onToggleTheme }) => {
             />
           </Link>
         </Header.Item>
-        <Header.Item full>
-          <Box display="flex" sx={{ gap: 3 }} ml={4}>
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/' ? 'bold' : 'normal'}>Home</Text>
-            </Link>
-            <Link to="/education" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/education' ? 'bold' : 'normal'}>Education</Text>
-            </Link>
-            <Link to="/work" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/work' ? 'bold' : 'normal'}>Work</Text>
-            </Link>
-            <Link to="/research" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/research' ? 'bold' : 'normal'}>Research</Text>
-            </Link>
-            <Link to="/projects" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <Text fontWeight={location.pathname === '/projects' ? 'bold' : 'normal'}>Projects</Text>
-            </Link>
-          </Box>
-        </Header.Item>
+        <Box 
+          position="absolute" 
+          left="50%" 
+          display="flex" 
+          alignItems="center"
+          sx={{ transform: 'translateX(-50%)', gap: 3 }}
+        >
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <Text fontSize={2} fontWeight={location.pathname === '/' ? 'bold' : 'normal'}>Home</Text>
+          </Link>
+          <Link to="/education" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <Text fontSize={2} fontWeight={location.pathname === '/education' ? 'bold' : 'normal'}>Education</Text>
+          </Link>
+          <Link to="/work" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <Text fontSize={2} fontWeight={location.pathname === '/work' ? 'bold' : 'normal'}>Work</Text>
+          </Link>
+          <Link to="/research" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <Text fontSize={2} fontWeight={location.pathname === '/research' ? 'bold' : 'normal'}>Research</Text>
+          </Link>
+          <Link to="/projects" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <Text fontSize={2} fontWeight={location.pathname === '/projects' ? 'bold' : 'normal'}>Projects</Text>
+          </Link>
+        </Box>
         <Header.Item>
           <Button onClick={onToggleTheme} leadingVisual={colorMode === 'day' ? MoonIcon : SunIcon}>
             {colorMode === 'day' ? 'Dark' : 'Light'}
