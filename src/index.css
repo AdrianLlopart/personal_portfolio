@@ -10,6 +10,11 @@
   --extrabold: 900;
 }
 
+html {
+  /* Prevent layout shift when scrollbar appears/disappears */
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: var(--font-family-lato) !important;
