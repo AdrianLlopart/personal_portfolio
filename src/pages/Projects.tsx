@@ -1,11 +1,22 @@
 import React, { useEffect } from 'react';
 import { Box, Heading, Text, Label, TextInput } from '@primer/react';
-import { SearchIcon, RepoIcon, BookIcon, VideoIcon } from '@primer/octicons-react';
+import { SearchIcon, RepoIcon, BookIcon, VideoIcon, GlobeIcon, CpuIcon, DependabotIcon } from '@primer/octicons-react';
 import ReactMarkdown from 'react-markdown';
 import { projects } from '../data';
 import MediaDisplay from '../components/MediaDisplay';
 import { useFilteredData } from '../hooks/useFilteredData';
 import { useLocation } from 'react-router-dom';
+
+// Helper function to get the appropriate icon based on project icon type
+const getProjectIcon = (project: typeof projects[0]) => {
+  if (project.icon === 'ai') return <CpuIcon />;
+  if (project.icon === 'robot') return <DependabotIcon />;
+  if (project.icon === 'webpage') return <GlobeIcon />;
+  // Fallback to original logic
+  if (project.pdfUrl) return <BookIcon />;
+  if (project.videoUrls && project.videoUrls.length > 0) return <VideoIcon />;
+  return <RepoIcon />;
+};
 
 const Projects: React.FC = () => {
   const location = useLocation();
@@ -69,7 +80,7 @@ const Projects: React.FC = () => {
               <Box display="flex" justifyContent="space-between" alignItems="flex-start" flexWrap="wrap">
                 <Box display="flex" sx={{ gap: 2 }} alignItems="center">
                    <Text color="fg.muted">
-                     {project.pdfUrl ? <BookIcon /> : (project.videoUrls && project.videoUrls.length > 0) ? <VideoIcon /> : <RepoIcon />}
+                     {getProjectIcon(project)}
                    </Text>
                    <Heading as="h3" sx={{ fontSize: 3 }}>
                      {project.websiteUrl ? (

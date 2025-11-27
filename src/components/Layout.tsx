@@ -56,7 +56,7 @@ const Layout: React.FC<LayoutProps> = ({ colorMode, onToggleTheme }) => {
 
       <Box p={4} borderTop="1px solid" borderColor="border.default" textAlign="center">
         <Text color="fg.muted" fontSize={1}>
-          © {new Date().getFullYear()} Adrian Llopart. Built with React & Primer CSS.
+          © {new Date().getFullYear()} Adrian Llopart. All rights reserved.
         </Text>
       </Box>
     </Box>

@@ -378,7 +378,7 @@ const MediaDisplay: React.FC<MediaLinks> = ({ videoUrls, imageUrls, websiteUrl, 
             sx={{ gap: 1, opacity: 0.9 }}
           >
             <BookIcon size={16} />
-            <Box as="span" fontSize={1}>PDF</Box>
+            <Box as="span" fontSize={1}>Paper</Box>
           </Box>
           <FullscreenOverlay />
         </Box>

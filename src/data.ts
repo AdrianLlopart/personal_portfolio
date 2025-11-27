@@ -16,6 +16,7 @@ export interface BaseItem extends MediaLinks {
 
 export interface Project extends BaseItem {
     id: string;
+    icon?: 'ai' | 'robot' | 'webpage';
 }
 
 export interface Experience extends MediaLinks {
@@ -59,6 +60,7 @@ export const projects: Project[] = [
     {
         id: "portfolio",
         title: "Personal Portfolio Website",
+        icon: "webpage",
         description:
             `Personal Portfolio Website showcasing projects, experience, and skills with a clean and responsive design.`,
         date: "2025",
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     {
         id: "kinokraft",
         title: "KinokraftAI - AI Agents for Gen AI Media Creation",
+        icon: "webpage",
         description:
             `KinoKraftAI is a comprehensive web application designed for AI-driven media creation and manipulation, offering tools for processing images, video, and audio through a conversational interface. The platform leverages Large Language Models (LLMs) to facilitate user interactions, allowing for complex media editing tasks and project management within a unified workspace. It features a robust architecture that integrates secure user authentication via Firebase and subscription management through Stripe. The system is built for scalability using containerization and infrastructure-as-code principles to ensure reliable deployment and performance.`,
         date: "2025",
@@ -78,6 +81,7 @@ export const projects: Project[] = [
     {
         id: "ast-doa",
         title: "Active Speaker Detection and Direction of Arrival",
+        icon: "ai",
         description: "Demo of the integration of multiple AI models (YoloV11, OSNet, BoxMot, LR-ASD, DOA) in a real-time Gstreamer processing pipeline.",
         date: "2025",
         tags: ["AI", "Audio", "CNN", "DOA", "Docker", "Gstreamer", "Multimodal", "ML", "Python"],
@@ -87,6 +91,7 @@ export const projects: Project[] = [
     {
         id: "webshop",
         title: "Webshop for Accoustic Frames",
+        icon: "webpage",
         description: `Full-stack e-commerce platform dedicated to the sale and customization of acoustic frames and whiteboards. The application features a React-based frontend that includes a product customizer, shopping cart, and user account management. It is powered by a Node.js and Express backend that handles API requests, authentication, and data management for products and orders. The project is designed to offer a seamless user experience for customers looking to tailor specific acoustic solutions to their needs.`,
         date: "2025",
         tags: ["e-commerce", "MongoDB", "Node.js", "React", "TypeScript"],
@@ -96,6 +101,7 @@ export const projects: Project[] = [
     {
         id: "table-cleaner",
         title: "Table Cleaning using a UR10 Robot Arm",
+        icon: "robot",
         description: "System that recognizes cutlery and dishes from a kinects video stream using CNNs (YOLO framewrok). It the generates the objects pointcloud and obtains suitable grasping positions. Finally it uses a UR10 robot arm to plan and move to the desired grasping locations.",
         date: "2016",
         tags: ["AI", "CNN", "C++", "Grasping", "ML", "PCL", "Robotics", "ROS"],
@@ -105,6 +111,7 @@ export const projects: Project[] = [
     {
         id: "rbpf",
         title: "Rao-Blackwellized Particle Filter for Grid- Based FastSlam",
+        icon: "robot",
         description: "MATLAB implementation of Rao-Blackwellized Particle Filter SLAM, covering map creation, motion modelling, and the full RBPF-SLAM pipeline including scan-matching, particle weighting, and resampling. It describes how simulated odometry and laser data are generated, how particle poses and occupancy grids are updated, and how improved proposal distributions allow accurate SLAM with very few particles.",
         date: "2016",
         tags: ["AI", "ML", "Matlab", "Robotics", "SLAM"],
@@ -127,7 +134,7 @@ export const research: Research[] = [
         tags: ["AI", "ML", "Pose Estimation", "Transformers"],
         publication: "arXiv:2009.00348",
         pdfUrl: "https://arxiv.org/pdf/2009.00348",
-        slidesUrl: "images/liftformer.pdf",
+        imageUrls: ["images/liftformer.png"],
         videoUrls: ["https://youtu.be/E-btfdI1-Vo", "videos/liftformer.gif"]
     },
     {
@@ -151,7 +158,7 @@ export const research: Research[] = [
         tags: ["3D", "AI", "CNN", "Grasping", "Humanoid", "ML", "Planning", "Robotics"],
         publication: "The 15th International Conference on Control, Automation, Robotics and Vision (ICARCV)",
         pdfUrl: "papers/task-intelligence.pdf",
-        slidesUrl: "images/task-intelligence.pdf",
+        imageUrls: ["images/task-intelligence.png"],
         videoUrls: ["https://youtu.be/XQtiLE5DmF8"],
     },
     {
