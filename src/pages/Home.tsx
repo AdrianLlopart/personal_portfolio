@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import { Box, Heading, Text, Link, Tooltip } from '@primer/react';
 import { MarkGithubIcon, MailIcon } from '@primer/octicons-react';
 import { FileIcon, Linkedin, YoutubeIcon } from 'lucide-react';
-import { bioTitle, bioDescription, work, education } from '../data';
+import ReactMarkdown from 'react-markdown';
+import { bioTitle, bioSubTitle, bioDescription, work, education } from '../data';
 import Timeline from '../components/Timeline';
 
 const Home: React.FC = () => {
@@ -72,13 +73,16 @@ const Home: React.FC = () => {
         </Box>
 
         <Box flexGrow={1} display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-          <Box width={['100%', '100%', '50%']}>
-            <Text as="p" fontWeight="bold" textAlign="center" fontSize={3} mb={2}>
+          <Box width={['100%', '100%', '70%']} mt={6}>
+            <Text as="p" fontWeight="bold" textAlign="center" fontSize={3} mb={0}>
               {bioTitle}
             </Text>
-            <Text as="p" fontSize={2} lineHeight={1.5} textAlign="justify">
-              {bioDescription}
+            <Text as="p" fontWeight="semibold" textAlign="center" sx={{ fontSize: '19px' }} mt={1}>
+              {bioSubTitle}
             </Text>
+            <Box fontSize={2} sx={{ lineHeight: 1.5, textAlign: 'justify', '& p': { margin: 0 }, '& strong': { fontWeight: 700 } }}>
+              <ReactMarkdown>{bioDescription}</ReactMarkdown>
+            </Box>
           </Box>
         </Box>
       </Box>
