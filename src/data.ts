@@ -299,6 +299,18 @@ export const work: Experience[] = [
         location: "Lyngby, Denmark",
         logoUrl: "logos/DTU.png",
         videoUrls: ["https://youtu.be/bilzTWrnptE"]
+    },
+    {
+        id: "teaching-assistant",
+        company: "Technical University of Denmark",
+        role: "Graduate Teaching Assistant on Robotics",
+        startDate: "2014",
+        endDate: "2017",
+        description: "Multiple years as a Teaching Assistant for the course: 31383 Robotics.",
+        longDescription: "Assisted in teaching and developing course materials for the Robotics course 31383. Responsibilities included conducting lab sessions, grading, and providing support to students. Taught topics such as Introduction to robotics, Robot forward and inverse kinematics, Velocity kinematics and trajectory planning, Manipulator dynamics, Robot control and Sensor systems.",
+        tags: ["Control", "CV", "Humanoid", "Matlab", "Research", "Robotics", "Sensor fusion"],
+        location: "Lyngby, Denmark",
+        logoUrl: "logos/DTU.png",
     }
 ];
 
