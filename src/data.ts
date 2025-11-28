@@ -99,6 +99,42 @@ export const projects: Project[] = [
         imageUrls: ["images/webshop.png"]
     },
     {
+        id: "3d-ball",
+        title: "3D ball dataset creation and annotation",
+        icon: "ai",
+        description: "System for creating and annotating a 3D ball dataset, involving data collection, processing, and labeling for machine learning applications.",
+        date: "2023",
+        tags: ["AI", "CNN", "ML", "Docker", "Gstreamer", "Python"],
+        videoUrls: ["https://youtu.be/TKAC5_1oK2Q", "https://youtu.be/xJ-u4voHpHU"]
+    },
+    {
+        id: "veo-analytics",
+        title: "Video-based Sports Match Analytics from multiple AI models",
+        icon: "ai",
+        description: "System for comprehensive sports match analytics using multiple AI models. Co-developed and designed the UX and UI of the user-facing product.",
+        date: "2022",
+        tags: ["CV", "Python"],
+        imageUrls: ["images/veo-analytics.jpeg"],
+        videoUrls: ["https://youtu.be/mDfiiC6TX10"]
+    },
+    {
+        id: "ball-tracking",
+        title: "2D Player and Ball detection and Trajectory Prediction",
+        icon: "ai",
+        description: "System for tracking and predicting the trajectory of players and balls in a 2D plane, involving data collection, annotation, developing the architecture, training, validation and deploying in product.",
+        date: "2022",
+        tags: ["AI", "CNN", "Docker", "Gstreamer", "ML", "Python"],
+        videoUrls: ["https://youtu.be/x-2wlMEHP5I"]
+    },
+    {
+        id: "event-detection",
+        title: "Sports Event Detection",
+        icon: "ai",
+        description: "System for detecting and classifying sports events in video streams using deep learning techniques, enhancing match analysis and insights.",
+        date: "2022",
+        tags: ["AI", "CNN", "ML", "Python"],
+    },
+    {
         id: "table-cleaner",
         title: "Table Cleaning using a UR10 Robot Arm",
         icon: "robot",
@@ -216,7 +252,7 @@ export const research: Research[] = [
         tags: ["3D", "AI", "CNN", "CV", "Grasping", "Humanoid", "ML", "PCL", "Robotics", "Segmentation"],
         publication: "IEEE International Conference on Robotics and Biomimetics (ROBIO)",
         pdfUrl: "papers/perception-ai.pdf",
-        videoUrls: ["https://youtu.be/cmANQdS_-Zk", "https://youtu.be/HLzFLMktIYc"],
+        videoUrls: ["https://youtu.be/cmANQdS_-Zk", "https://youtu.be/HLzFLMktIYc", "https://youtu.be/n21yBID4yTM", "https://youtu.be/7Y98swxMkMY"],
         codeUrl: "https://github.com/Allopart/semantic_mapping_and_manipulation"
     },
     {
@@ -230,6 +266,7 @@ export const research: Research[] = [
         pdfUrl: "papers/door-recognition.pdf",
         slidesUrl: "presentations/door-recognition.pdf",
         videoUrls: ["https://youtu.be/d9ijieCgzjA"],
+        imageUrls: ["images/door-recognition.jpeg"],
         codeUrl: "https://github.com/Allopart/door_detection_smr"
     },
 ];
@@ -271,8 +308,10 @@ export const work: Experience[] = [
         description: "Video-based sports analytics using deep learning",
         longDescription: `Building, training and deploying of production-ready deep learning models to be run on cloud and edge devices. This includes data collection, annotation and processing; model definition, training, optimization, profiling, testing and developing the infrastructure for inference using AWS and Gstreamer. Dealt with player and ball detection and tracking, event recognition and advanced match analytics using AI.`,
         tags: ["AI", "AWS", "CNN", "Docker", "Edge", "Gstreamer", "Leadership", "ML", "MLOps", "Multimodal", "Pose Estimation", "Python", "SportTech", "Transformer"],
+        relatedProjectIds: ["event-detection", "ball-tracking", "3d-ball", "veo-analytics"],
         location: "Copenhagen, Denmark",
         logoUrl: "logos/VEO.png",
+        imageUrls: ["images/veo-analytics.jpeg"],
         videoUrls: ["https://www.youtube.com/watch?v=F6o9F01GAqY&list=PLksR6ZWZCOOONcj5X8E-HcgyGoogPDm7H&t=1030s", "https://youtu.be/mDfiiC6TX10"]
     },
     {
@@ -311,6 +350,19 @@ export const work: Experience[] = [
         tags: ["Control", "CV", "Humanoid", "Matlab", "Research", "Robotics", "Sensor fusion"],
         location: "Lyngby, Denmark",
         logoUrl: "logos/DTU.png",
+    },
+    {
+        id: "iri",
+        company: "Robotics and Industrial Informatics Institute",
+        role: "Student assistant on Robotics",
+        startDate: "2010",
+        endDate: "2012",
+        description: "Small humanoid control for robotics competitions.",
+        longDescription: "Programming small humanoid robots (Nao and Bioloid) for robotics competitions (sumo, labyrinth and stairs) such as Ceabot. Developed control algorithms, vision processing, and behavior strategies to enhance robot performance in dynamic environments.",
+        tags: ["Control", "CV", "Humanoid", "C++", "Research", "Robotics", "Sensor fusion"],
+        location: "Barcelona, Spain",
+        videoUrls: ["https://youtu.be/v534EGBG-8w", "https://youtu.be/eZUnwl0Bp3Y"],
+        logoUrl: "logos/IRI.jpeg",
     }
 ];
 
@@ -390,6 +442,7 @@ export const education: Education[] = [
         longDescription: "Stay abroad Course to learn the basics of C# and .NET and to create interfaces to control robots. Basic Understanding of threading and decision making in robots.",
         tags: [".NET", "C#", "CS", "Robotics"],
         websiteUrl: "https://www.best.eu.org/event/details.jsp?activity=afdp71v",
+        imageUrls: ["images/best-timisoara.jpeg"],
         logoUrl: "logos/PUT.png",
         location: "Timisoara, Romania"
     },
